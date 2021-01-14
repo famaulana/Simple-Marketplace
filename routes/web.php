@@ -20,4 +20,6 @@ Route::get('/login', function () {
     return view('pages.login');
 })->name('login');
 
-Route::post('/login/auth', 'LoginController@auth')->name("auth");
+Route::post('/login/post', 'App\Http\Controllers\LoginController@post')->name("postLogin");
+Route::get('/logout', 'App\Http\Controllers\LoginController@logout')->name("logout");
+Route::post('/register/post', 'RegisterController@post')->name("postRegist");

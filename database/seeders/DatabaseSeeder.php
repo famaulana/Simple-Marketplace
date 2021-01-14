@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 use DB;
 
 class DatabaseSeeder extends Seeder
@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'email' => 'farhanagungmaulana@gmail.com',
             'name' => 'farhan agung maulana',
-            'password' => Crypt::encrypt('12345678'),
+            'password' => Hash::make('12345678'),
             'mobile_number' => '081336503277',
             'balance' => 0
         ]);

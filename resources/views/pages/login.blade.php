@@ -2,7 +2,11 @@
 @section('content')
     <div class="row">
         <h1>Login</h1>
-        <form action="{{ route('auth') }}" method="post">
+        @if($errors->any())
+        <p class="text-danger">{{$errors->first()}}</p>
+        @endif
+        <form action="{{ route('postLogin') }}" method="post">
+            @csrf
             <div class="col-md-12 my-2">
                 <input type="email" class="form-control" name="email" placeholder="Email">
             </div>

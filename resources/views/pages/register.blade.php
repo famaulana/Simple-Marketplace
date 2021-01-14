@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <h1>Register</h1>
-        <form action="" method="post">
+        <form action="{{ route('postRegist') }}" method="post">
             <div class="col-md-12 my-2">
                 <input type="text" class="form-control" name="name" placeholder="Name">
             </div>
