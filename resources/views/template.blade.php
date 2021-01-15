@@ -9,9 +9,7 @@
 </head>
 <body>
     <div class="main">
-        <div class="container my-5">
-            @yield('content')
-        </div>
+        @yield('content')
     </div>
 </body>
 </html>

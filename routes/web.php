@@ -13,13 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.register');
-})->name('register');
-Route::get('/login', function () {
-    return view('pages.login');
-})->name('login');
-
+Route::get('/login', 'App\Http\Controllers\LoginController@index')->name('login');
 Route::post('/login/post', 'App\Http\Controllers\LoginController@post')->name("postLogin");
 Route::get('/logout', 'App\Http\Controllers\LoginController@logout')->name("logout");
-Route::post('/register/post', 'RegisterController@post')->name("postRegist");
+Route::get('/', 'App\Http\Controllers\RegisterController@index')->name('register');
+Route::post('/register/post', 'App\Http\Controllers\RegisterController@post')->name("postRegist");

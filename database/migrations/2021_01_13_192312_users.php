@@ -18,8 +18,8 @@ class Users extends Migration
             $table->string('email', 191)->unique();
             $table->string('name');
             $table->string('password');
-            $table->string('mobile_number');
-            $table->string('balance');
+            $table->string('mobile_number')->nullable($value = true);
+            $table->string('balance')->nullable($value = true);
             $table->timestamps();
         });
     }
