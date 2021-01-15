@@ -55,9 +55,15 @@ class BalanceController extends Controller
         }
         
         if($this->balanceModel->store($data)){
-            return back()->withErrors([
-                'succ' => 'Success adding your balance.'
-            ]);
+            if($data['status'] == "success"){
+                return back()->withErrors([
+                    'succ' => 'Success adding your balance.'
+                ]);
+            }else{
+                return back()->withErrors([
+                    'err' => 'Sorry your transaction has canceled, please try again!!'
+                ]);
+            }
         }else{
             return back()->withErrors([
                 'err' => 'Error while proccess your request.'

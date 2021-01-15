@@ -18,7 +18,7 @@ class Users extends Migration
             $table->string('email', 191)->unique();
             $table->string('name');
             $table->string('password');
-            $table->string('balance')->nullable($value = true);
+            $table->string('balance')->default(0);
             $table->timestamps();
         });
     }
