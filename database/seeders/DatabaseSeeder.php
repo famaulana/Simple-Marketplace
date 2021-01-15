@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'farhanagungmaulana@gmail.com',
             'name' => 'farhan agung maulana',
             'password' => Hash::make('12345678'),
-            'mobile_number' => '081336503277',
             'balance' => 0
         ]);
     }

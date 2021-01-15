@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Users extends Migration
+class Balaces extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class Users extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('balance', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('email', 191)->unique();
-            $table->string('name');
-            $table->string('password');
-            $table->string('balance')->nullable($value = true);
+            $table->string('mobile_number');
+            $table->string('value');
             $table->timestamps();
         });
     }
