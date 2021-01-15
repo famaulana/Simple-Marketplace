@@ -20,7 +20,7 @@
                     <a href="{{route('prepaidBalance')}}" class="m-auto"><b>Prepaid Balance</b></a>
                 </div>
                 <div class="col-md-6 border-start text-center d-flex">
-                    <a href="" class="m-auto"><b>Product Page</b></a>
+                    <a href="{{route('product')}}" class="m-auto"><b>Product Page</b></a>
                 </div>
             </div>
         </div>

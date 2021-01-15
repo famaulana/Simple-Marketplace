@@ -16,10 +16,11 @@ class Orders extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->string('no_order');
+            $table->string('no_order', 191)->unique();
             $table->string('product');
             $table->text('ship_address');
             $table->string('price');
+            $table->string('status');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });

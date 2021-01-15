@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\ValidationForm; 
+use App\Http\Requests\ValidationFormBalance; 
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\BalanceModel;
@@ -32,8 +32,9 @@ class BalanceController extends Controller
         return view('pages/balance', $data);
     }
     
-    public function post(ValidationForm $request)
+    public function post(ValidationFormBalance $request)
     {
+
         $userData = Auth::user();
 
         $status = $this->randomizeStatus();
