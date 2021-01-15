@@ -4,15 +4,20 @@
         <div class="row d-flex ">
             <div class="col-md-6 m-auto">
                 <div class="row">
-                    <h3 class="text-black">Hello, Name</h3>
+                    <h3 class="text-black">Hello, {{$userName}}</h3>
                 </div>
                 <div class="row">
-                    <p class="text-dark"><span class="text-danger">2</span> unpaid order</p>
+                    <div class="col-md-3">
+                        <p class="text-dark"><span class="text-danger">2</span> unpaid order</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-dark">Your balance <span class="text-success">Rp {{$userBalance}}</span></p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6 justify-content-end d-flex">
                 <div class="col-md-6 border-end text-center d-flex">
-                    <a href="" class="m-auto"><b>Prepaid Balance</b></a>
+                    <a href="{{route('prepaidBalance')}}" class="m-auto"><b>Prepaid Balance</b></a>
                 </div>
                 <div class="col-md-6 border-start text-center d-flex">
                     <a href="" class="m-auto"><b>Product Page</b></a>

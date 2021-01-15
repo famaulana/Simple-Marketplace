@@ -15,9 +15,12 @@ class Balaces extends Migration
     {
         Schema::create('balance', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
             $table->string('mobile_number');
             $table->string('value');
+            $table->string('status');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

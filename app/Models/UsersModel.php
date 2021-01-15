@@ -19,6 +19,16 @@ class UsersModel extends Model
         }else{
             return false;
         };
-        
+    }
+
+    public function edit($data)
+    {
+        $edit = UsersModel::find($data['id']);
+        // $edit = $data;
+        if($edit->update($data)){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
