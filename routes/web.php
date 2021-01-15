@@ -13,8 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', 'App\Http\Controllers\BalanceController@index')->name('prepaidBalance');
 Route::get('/login', 'App\Http\Controllers\LoginController@index')->name('login');
 Route::post('/login/post', 'App\Http\Controllers\LoginController@post')->name("postLogin");
 Route::get('/logout', 'App\Http\Controllers\LoginController@logout')->name("logout");
-Route::get('/', 'App\Http\Controllers\RegisterController@index')->name('register');
+Route::get('/register', 'App\Http\Controllers\RegisterController@index')->name('register');
 Route::post('/register/post', 'App\Http\Controllers\RegisterController@post')->name("postRegist");
