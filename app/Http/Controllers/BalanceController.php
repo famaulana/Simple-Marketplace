@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\ValidationFormBalance; 
+use App\Http\Requests\ValidationForm; 
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\BalanceModel;
 use App\Models\UsersModel;
+use App\Models\ProductModel;
 
 class BalanceController extends Controller
 {
@@ -15,6 +16,7 @@ class BalanceController extends Controller
     {
         $this->balanceModel = new BalanceModel;
         $this->usersModel = new UsersModel;
+        $this->productModel = new ProductModel;
     }
 
     public function index()
@@ -28,11 +30,12 @@ class BalanceController extends Controller
         $data = array(
             'userName' => $userData->name,
             'userBalance' => $userData->balance,
+            'unpaid' => count($this->productModel->getUnpaidOrder())
         );
         return view('pages/balance', $data);
     }
     
-    public function post(ValidationFormBalance $request)
+    public function post(ValidationForm $request)
     {
 
         $userData = Auth::user();
@@ -97,7 +100,7 @@ class BalanceController extends Controller
         }
         
         if($rand == 0){
-            return "failed";
+            return "canceled";
         }else{
             return "success";
         }

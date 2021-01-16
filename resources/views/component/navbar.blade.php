@@ -8,7 +8,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <p class="text-dark"><span class="text-danger">2</span> unpaid order</p>
+                        <p class="text-dark"><span class="text-danger">{{$unpaid}}</span> unpaid order</p>
                     </div>
                     <div class="col-md-6">
                         <p class="text-dark">Your balance <span class="text-success">Rp {{$userBalance}}</span></p>

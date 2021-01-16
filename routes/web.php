@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/', 'App\Http\Controllers\ProductController@history')->name('history');
 Route::get('/login', 'App\Http\Controllers\LoginController@index')->name('login');
 Route::post('/login/post', 'App\Http\Controllers\LoginController@post')->name("postLogin");
 Route::get('/logout', 'App\Http\Controllers\LoginController@logout')->name("logout");

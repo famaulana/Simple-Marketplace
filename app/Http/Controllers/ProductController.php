@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\ValidationForm; 
 use Illuminate\Support\Facades\Auth;
 use App\Models\ProductModel;
 use App\Models\UsersModel;
+use App\Models\BalanceModel;
 
 class ProductController extends Controller
 {
@@ -14,6 +14,7 @@ class ProductController extends Controller
     {
         $this->productModel = new ProductModel;
         $this->usersModel = new UsersModel;
+        $this->balanceModel = new BalanceModel;
     }
 
     public function index()
@@ -27,8 +28,33 @@ class ProductController extends Controller
         $data = array(
             'userName' => $userData->name,
             'userBalance' => $userData->balance,
+            'unpaid' => count($this->productModel->getUnpaidOrder())
         );
         return view('pages/product', $data);
+    }
+
+    public function history()
+    {
+        $userData = Auth::user();
+        
+        if(empty($userData->id)){
+            return redirect('/login');
+        }
+
+        $dataHistory = $this->productModel->getHistory();
+        foreach($this->balanceModel->getHistory() as $item){
+            array_push($dataHistory, $item);
+        }
+
+        // dd($dataHistory);
+
+        $data = array(
+            'userName' => $userData->name,
+            'userBalance' => $userData->balance,
+            'unpaid' => count($this->productModel->getUnpaidOrder()),
+            'dataHistory' => $dataHistory
+        );
+        return view('pages/history', $data);
     }
 
     public function successOrder($id)
@@ -41,6 +67,7 @@ class ProductController extends Controller
             'userName' => $userData->name,
             'userBalance' => $userData->balance,
             'data' =>$dataProduct,
+            'unpaid' => count($this->productModel->getUnpaidOrder())
         );
         return view('pages/successOrder', $data);
     }
@@ -55,6 +82,7 @@ class ProductController extends Controller
             'userName' => $userData->name,
             'userBalance' => $userData->balance,
             'data' =>$dataProduct,
+            'unpaid' => count($this->productModel->getUnpaidOrder())
         );
         return view('pages/pay', $data);
     }
